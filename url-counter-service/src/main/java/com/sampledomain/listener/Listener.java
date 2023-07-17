@@ -10,17 +10,16 @@ import org.springframework.stereotype.Component;
 @Component
 @KafkaListener(id = "listenerURLCounter", topics = "${message.topic1}")
 public class Listener {
-    @Autowired
-    private ElasticsearchResource elasticsearchResource;
+  @Autowired private ElasticsearchResource elasticsearchResource;
 
-    @KafkaHandler
-    public void handleSenderMessage(Message message) {
-        System.out.println("URLCounter listener: Message received: " + message.message());
-        elasticsearchResource.send(message);
-    }
+  @KafkaHandler
+  public void handleSenderMessage(Message message) {
+    System.out.println("URLCounter listener: Message received: " + message.message());
+    elasticsearchResource.send(message);
+  }
 
-    @KafkaHandler(isDefault = true)
-    public void unknown(Object object) {
-        System.out.println("URLCounter listener: Unknown type received: " + object);
-    }
+  @KafkaHandler(isDefault = true)
+  public void unknown(Object object) {
+    System.out.println("URLCounter listener: Unknown type received: " + object);
+  }
 }

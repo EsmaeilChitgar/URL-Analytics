@@ -1,4 +1,4 @@
-package com.sampledomain.config;
+package com.sampledomain.kafka.config;
 
 import com.sampledomain.messages.Message;
 import java.util.HashMap;

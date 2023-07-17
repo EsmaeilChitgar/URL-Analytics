@@ -1,4 +1,4 @@
-package com.sampledomain.listener;
+package com.sampledomain.kafka.listener;
 
 import com.sampledomain.messages.Message;
 import org.springframework.kafka.annotation.KafkaHandler;
@@ -11,6 +11,11 @@ public class Listener {
   @KafkaHandler
   public void handleSenderMessage(Message msg) {
     System.out.println("URLGenerator listener: Message received: " + msg.message());
+  }
+
+  @KafkaHandler
+  public void handleSenderMessage(String msg) {
+    System.out.println("URLGenerator listener: String received: " + msg);
   }
 
   @KafkaHandler(isDefault = true)

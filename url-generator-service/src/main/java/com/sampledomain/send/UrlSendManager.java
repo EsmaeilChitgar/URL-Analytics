@@ -1,4 +1,4 @@
-package com.sampledomain;
+package com.sampledomain.send;
 
 import com.sampledomain.messages.Message;
 import com.sampledomain.url.UrlGenerator;
@@ -15,6 +15,8 @@ import org.springframework.kafka.core.KafkaTemplate;
 public class UrlSendManager {
   private final UrlGenerator urlGenerator;
 
+  private final ScheduledExecutorService scheduler;
+
   @Value(value = "${message.topic1}")
   private String topicUrl;
 
@@ -22,16 +24,16 @@ public class UrlSendManager {
 
   public UrlSendManager() {
     this.urlGenerator = new UrlGenerator();
+    scheduler = Executors.newSingleThreadScheduledExecutor();
   }
 
   @Bean
   public void send() {
-    ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
     scheduler.scheduleAtFixedRate(
         () -> {
           Message message = new Message(urlGenerator.generateUrl());
           System.out.println("URLGeneratorServiceApplication sends url: " + message);
-          kafkaTemplate.send(topicUrl, message);
+          kafkaTemplate.send(topicUrl, message.message());
         },
         1,
         1,

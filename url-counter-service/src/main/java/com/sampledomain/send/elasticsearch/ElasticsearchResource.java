@@ -1,4 +1,4 @@
-package com.sampledomain.elasticsearch;
+package com.sampledomain.send.elasticsearch;
 
 import com.sampledomain.messages.Message;
 import java.io.IOException;
@@ -24,10 +24,14 @@ public class ElasticsearchResource {
   }
 
   public void send(Message message) {
+    send(message.toString());
+  }
+
+  public void send(String message) {
     try {
       XContentBuilder builder = XContentFactory.jsonBuilder();
       builder.startObject();
-      builder.field("message", message.toString());
+      builder.field("message", message);
       builder.endObject();
 
       String indexName = "my_index";

@@ -29,7 +29,7 @@ public class UrlSendManager {
     ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
     scheduler.scheduleAtFixedRate(
         () -> {
-          var message = new Message(urlGenerator.generateUrl());
+          Message message = new Message(urlGenerator.generateUrl());
           System.out.println("URLGeneratorServiceApplication sends url: " + message);
           kafkaTemplate.send(topicUrl, message);
         },

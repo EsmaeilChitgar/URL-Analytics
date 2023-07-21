@@ -11,6 +11,8 @@ import org.elasticsearch.xcontent.XContentBuilder;
 import org.elasticsearch.xcontent.XContentFactory;
 import org.springframework.stereotype.Component;
 
+import static com.sampledomain.log.LogManager.LOG;
+
 @Component
 public class ElasticsearchResource {
   RestHighLevelClient client;
@@ -40,8 +42,7 @@ public class ElasticsearchResource {
 
       client.index(request, RequestOptions.DEFAULT);
 
-      System.out.println(
-          "URlCounter: send to elasticsearch....................................... " + message);
+      LOG.info("URlCounter: send to elasticsearch....................................... " + message);
     } catch (IOException e) {
       e.printStackTrace();
     }

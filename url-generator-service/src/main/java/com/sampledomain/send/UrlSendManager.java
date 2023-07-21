@@ -1,5 +1,7 @@
 package com.sampledomain.send;
 
+import static com.sampledomain.log.LogManager.LOG;
+
 import com.sampledomain.messages.Message;
 import com.sampledomain.url.UrlGenerator;
 import java.util.concurrent.Executors;
@@ -32,8 +34,8 @@ public class UrlSendManager {
     scheduler.scheduleAtFixedRate(
         () -> {
           Message message = new Message(urlGenerator.generateUrl());
-          System.out.println("URLGeneratorServiceApplication sends url: " + message);
           kafkaTemplate.send(topicUrl, message.message());
+          LOG.info("URLGeneratorServiceApplication sends url: " + message);
         },
         1,
         1,

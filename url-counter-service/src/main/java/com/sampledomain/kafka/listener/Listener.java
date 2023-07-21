@@ -7,6 +7,8 @@ import org.springframework.kafka.annotation.KafkaHandler;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
+import static com.sampledomain.log.LogManager.LOG;
+
 @Component
 @KafkaListener(id = "listenerURLCounter", topics = "${message.topic1}")
 public class Listener {
@@ -14,18 +16,18 @@ public class Listener {
 
   @KafkaHandler
   public void handleSenderMessage(Message message) {
-    System.out.println("URLCounter listener: Message received: " + message.message());
+    LOG.info("URLCounter listener: Message received: " + message.message());
     elasticsearchResource.send(message);
   }
 
   @KafkaHandler
   public void handleSenderMessage(String message) {
-    System.out.println("URLCounter listener: String received: " + message);
+    LOG.info("URLCounter listener: String received: " + message);
     elasticsearchResource.send(message);
   }
 
   @KafkaHandler(isDefault = true)
   public void unknown(Object object) {
-    System.out.println("URLCounter listener: Unknown type received: " + object);
+    LOG.warn("URLCounter listener: Unknown type received: " + object);
   }
 }

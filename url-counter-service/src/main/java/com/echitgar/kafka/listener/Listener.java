@@ -2,7 +2,7 @@ package com.echitgar.kafka.listener;
 
 import static com.echitgar.log.LogManager.LOG;
 
-import com.echitgar.messages.Message;
+import com.echitgar.schema.Message;
 import com.echitgar.send.elasticsearch.ElasticsearchResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaHandler;
@@ -16,7 +16,7 @@ public class Listener {
 
   @KafkaHandler
   public void handleSenderMessage(Message message) {
-    LOG.info("URLCounter listener: Message received: " + message.message());
+    LOG.info("URLCounter listener: Message received: " + message.getMessage());
     elasticsearchResource.send(message);
   }
 

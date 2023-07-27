@@ -16,7 +16,13 @@
         <dependency>
             <groupId>com.echitgar</groupId>
             <artifactId>common</artifactId>
-            <version>0.0.2</version>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.echitgar</groupId>
+            <artifactId>url-spec</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 

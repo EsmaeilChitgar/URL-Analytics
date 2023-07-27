@@ -2,7 +2,7 @@ package com.echitgar.kafka.listener;
 
 import static com.echitgar.log.LogManager.LOG;
 
-import com.echitgar.messages.Message;
+import com.echitgar.schema.Message;
 import org.springframework.kafka.annotation.KafkaHandler;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class Listener {
   @KafkaHandler
   public void handleSenderMessage(Message msg) {
-    LOG.info("URLGenerator listener: Message received: " + msg.message());
+    LOG.info("URLGenerator listener: Message received: " + msg.getMessage());
   }
 
   @KafkaHandler

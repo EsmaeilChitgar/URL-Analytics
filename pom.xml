@@ -10,19 +10,20 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.sampledomain</groupId>
-    <artifactId>UrlAnalytics</artifactId>
-    <version>0.0.1</version>
-    <name>UrlAnalytics</name>
+    <groupId>com.echitgar</groupId>
+    <artifactId>url-analytics</artifactId>
+    <version>0.0.2</version>
+    <name>url-analytics</name>
     <description>Demo project for Url Analytics</description>
     <url>https://github.com/EsmaeilChitgar/URL-Analytics</url>
 
+    <packaging>pom</packaging>
+
     <modules>
+        <module>common</module>
         <module>url-generator-service</module>
         <module>url-counter-service</module>
-        <module>common</module>
     </modules>
-    <packaging>pom</packaging>
 
     <licenses>
         <license>
@@ -105,7 +106,6 @@
                 <plugin>
                     <groupId>com.theoryinpractise</groupId>
                     <artifactId>googleformatter-maven-plugin</artifactId>
-                    <version>1.7.5</version>
                     <executions>
                         <execution>
                             <id>reformat-sources</id>

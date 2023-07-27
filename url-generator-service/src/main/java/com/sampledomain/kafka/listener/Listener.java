@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class Listener {
   @KafkaHandler
   public void handleSenderMessage(Message msg) {
-    LOG.info("zzzzzzzzzzURLGenerator listener: Message received: " + msg.message());
+    LOG.info("URLGenerator listener: Message received: " + msg.message());
   }
 
   @KafkaHandler

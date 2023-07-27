@@ -1,5 +1,7 @@
 package com.sampledomain.send.elasticsearch;
 
+import static com.sampledomain.log.LogManager.LOG;
+
 import com.sampledomain.messages.Message;
 import java.io.IOException;
 import org.apache.http.HttpHost;
@@ -10,8 +12,6 @@ import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.xcontent.XContentBuilder;
 import org.elasticsearch.xcontent.XContentFactory;
 import org.springframework.stereotype.Component;
-
-import static com.sampledomain.log.LogManager.LOG;
 
 @Component
 public class ElasticsearchResource {
@@ -42,7 +42,8 @@ public class ElasticsearchResource {
 
       client.index(request, RequestOptions.DEFAULT);
 
-      LOG.info("URlCounter: send to elasticsearch....................................... " + message);
+      LOG.info(
+          "URlCounter: send to elasticsearch....................................... " + message);
     } catch (IOException e) {
       e.printStackTrace();
     }

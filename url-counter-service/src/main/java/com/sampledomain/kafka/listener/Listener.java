@@ -1,13 +1,13 @@
 package com.sampledomain.kafka.listener;
 
+import static com.sampledomain.log.LogManager.LOG;
+
 import com.sampledomain.messages.Message;
 import com.sampledomain.send.elasticsearch.ElasticsearchResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaHandler;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
-
-import static com.sampledomain.log.LogManager.LOG;
 
 @Component
 @KafkaListener(id = "listenerURLCounter", topics = "${message.topic1}")

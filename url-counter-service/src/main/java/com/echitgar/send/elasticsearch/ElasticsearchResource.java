@@ -2,7 +2,7 @@ package com.echitgar.send.elasticsearch;
 
 import static com.echitgar.log.LogManager.LOG;
 
-import com.echitgar.messages.Message;
+import com.echitgar.schema.Message;
 import java.io.IOException;
 import org.apache.http.HttpHost;
 import org.elasticsearch.action.index.IndexRequest;

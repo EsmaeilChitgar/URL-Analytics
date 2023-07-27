@@ -1,6 +1,6 @@
 package com.echitgar.kafka.config;
 
-import com.echitgar.messages.Message;
+import com.echitgar.schema.Message;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.kafka.clients.consumer.ConsumerConfig;

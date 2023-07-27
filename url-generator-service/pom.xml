@@ -11,4 +11,12 @@
 
     <artifactId>URLGenerator</artifactId>
     <name>URLGenerator</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.sampledomain</groupId>
+            <artifactId>common</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+    </dependencies>
 </project>

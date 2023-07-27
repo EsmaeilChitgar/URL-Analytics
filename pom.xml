@@ -20,6 +20,7 @@
     <modules>
         <module>url-generator-service</module>
         <module>url-counter-service</module>
+        <module>common</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -87,44 +88,46 @@
     </dependencies>
 
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>com.theoryinpractise</groupId>
-                <artifactId>googleformatter-maven-plugin</artifactId>
-                <version>1.7.5</version>
-                <executions>
-                    <execution>
-                        <id>reformat-sources</id>
-                        <configuration>
-                            <includeStale>false</includeStale>
-                            <style>GOOGLE</style>
-                            <formatMain>true</formatMain>
-                            <formatTest>true</formatTest>
-                            <filterModified>false</filterModified>
-                            <skip>false</skip>
-                            <fixImports>true</fixImports>
-                            <maxLineLength>100</maxLineLength>
-                        </configuration>
-                        <goals>
-                            <goal>format</goal>
-                        </goals>
-                        <phase>process-sources</phase>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+                        <excludes>
+                            <exclude>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                            </exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>com.theoryinpractise</groupId>
+                    <artifactId>googleformatter-maven-plugin</artifactId>
+                    <version>1.7.5</version>
+                    <executions>
+                        <execution>
+                            <id>reformat-sources</id>
+                            <configuration>
+                                <includeStale>false</includeStale>
+                                <style>GOOGLE</style>
+                                <formatMain>true</formatMain>
+                                <formatTest>true</formatTest>
+                                <filterModified>false</filterModified>
+                                <skip>false</skip>
+                                <fixImports>true</fixImports>
+                                <maxLineLength>100</maxLineLength>
+                            </configuration>
+                            <goals>
+                                <goal>format</goal>
+                            </goals>
+                            <phase>process-sources</phase>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 
 </project>

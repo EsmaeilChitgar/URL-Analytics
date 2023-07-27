@@ -6,11 +6,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.sampledomain</groupId>
-        <artifactId>UrlAnalytics</artifactId>
-        <version>0.0.1</version>
+        <groupId>com.echitgar</groupId>
+        <artifactId>url-analytics</artifactId>
+        <version>0.0.2</version>
     </parent>
 
     <artifactId>common</artifactId>
     <name>common</name>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.theoryinpractise</groupId>
+                <artifactId>googleformatter-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

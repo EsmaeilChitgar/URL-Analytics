@@ -5,19 +5,19 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.sampledomain</groupId>
-        <artifactId>UrlAnalytics</artifactId>
-        <version>0.0.1</version>
+        <groupId>com.echitgar</groupId>
+        <artifactId>url-analytics</artifactId>
+        <version>0.0.2</version>
     </parent>
 
-    <artifactId>URLCounter</artifactId>
-    <name>URLCounter</name>
+    <artifactId>url-counter-service</artifactId>
+    <name>url-counter-service</name>
 
     <dependencies>
         <dependency>
-            <groupId>com.sampledomain</groupId>
+            <groupId>com.echitgar</groupId>
             <artifactId>common</artifactId>
-            <version>0.0.1</version>
+            <version>0.0.2</version>
         </dependency>
         <!-- Elasticsearch Java High-Level REST Client -->
         <dependency>
@@ -33,4 +33,13 @@
             <version>4.5.14</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.theoryinpractise</groupId>
+                <artifactId>googleformatter-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

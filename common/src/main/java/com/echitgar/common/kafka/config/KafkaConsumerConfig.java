@@ -1,4 +1,4 @@
-package com.echitgar.kafka.config;
+package com.echitgar.common.kafka.config;
 
 import com.echitgar.schema.Message;
 import java.util.HashMap;

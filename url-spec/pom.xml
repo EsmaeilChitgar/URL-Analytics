@@ -12,14 +12,6 @@
     <artifactId>url-spec</artifactId>
     <name>url-spec</name>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.echitgar</groupId>
-            <artifactId>common</artifactId>
-            <version>0.0.2</version>
-        </dependency>
-    </dependencies>
-
     <build>
         <plugins>
             <plugin>

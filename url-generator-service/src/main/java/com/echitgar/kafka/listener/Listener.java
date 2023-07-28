@@ -1,27 +1,32 @@
 package com.echitgar.kafka.listener;
 
-import static com.echitgar.common.log.LogManager.LOG;
-
+import com.echitgar.common.kafka.event.KafkaMessageEvent;
 import com.echitgar.schema.Message;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.kafka.annotation.KafkaHandler;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
+import static com.echitgar.common.log.LogManager.LOG;
+
 @Component
-@KafkaListener(id = "listenerURLGenerator", topics = "${message.topic1}")
+@KafkaListener(id = "url-generator-listener-id", topics = "${message.topic1}")
 public class Listener {
   @KafkaHandler
-  public void handleSenderMessage(Message msg) {
-    LOG.info("URLGenerator listener: Message received: " + msg.getMessage());
+  public void handleSenderMessage(Message message) {
+    LOG.info("listener: Message received: " + message.getMessage());
   }
 
   @KafkaHandler
-  public void handleSenderMessage(String msg) {
-    LOG.info("URLGenerator listener: String received: " + msg);
+  public void handleSenderMessage(String message) {
+    LOG.info("listener: String received: " + message);
   }
 
   @KafkaHandler(isDefault = true)
   public void unknown(Object object) {
-    LOG.error("URLGenerator listener: Unknown type received: " + object);
+    LOG.warn("listener: Unknown type received: " + object);
+
+    KafkaMessageEvent event = new KafkaMessageEvent(this, "Unknown type received: " + object);
   }
 }

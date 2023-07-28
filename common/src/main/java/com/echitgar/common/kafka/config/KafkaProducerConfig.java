@@ -1,5 +1,6 @@
-package com.echitgar.kafka.config;
+package com.echitgar.common.kafka.config;
 
+import com.echitgar.schema.Message;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -33,6 +34,17 @@ public class KafkaProducerConfig {
   @Bean
   public KafkaTemplate<String, Object> kafkaTemplate(
       ProducerFactory<String, Object> producerFactory) {
+    return new KafkaTemplate<>(producerFactory);
+  }
+
+  @Bean
+  public ProducerFactory<String, Message> producerFactoryMessage() {
+    return new DefaultKafkaProducerFactory<>(producerConfig());
+  }
+
+  @Bean
+  public KafkaTemplate<String, Message> kafkaTemplateMessage(
+      ProducerFactory<String, Message> producerFactory) {
     return new KafkaTemplate<>(producerFactory);
   }
 }

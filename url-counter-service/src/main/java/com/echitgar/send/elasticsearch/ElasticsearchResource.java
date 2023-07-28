@@ -1,6 +1,6 @@
 package com.echitgar.send.elasticsearch;
 
-import static com.echitgar.log.LogManager.LOG;
+import static com.echitgar.common.log.LogManager.LOG;
 
 import com.echitgar.schema.Message;
 import java.io.IOException;

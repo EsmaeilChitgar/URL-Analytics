@@ -1,6 +1,6 @@
 package com.echitgar.kafka.listener;
 
-import static com.echitgar.log.LogManager.LOG;
+import static com.echitgar.common.log.LogManager.LOG;
 
 import com.echitgar.schema.Message;
 import org.springframework.kafka.annotation.KafkaHandler;

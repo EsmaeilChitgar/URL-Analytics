@@ -1,6 +1,6 @@
 package com.echitgar.send;
 
-import static com.echitgar.log.LogManager.LOG;
+import static com.echitgar.common.log.LogManager.LOG;
 
 import com.echitgar.url.UrlGenerator;
 import java.util.concurrent.Executors;

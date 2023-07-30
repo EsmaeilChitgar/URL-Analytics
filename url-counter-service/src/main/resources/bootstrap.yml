@@ -1,0 +1,10 @@
+server:
+  port: 9094
+spring:
+  application:
+    name: url-counter-service
+  cloud:
+    config:
+      uri: http://localhost:9090
+      profile: default
+      name: kafka, elasticsearch

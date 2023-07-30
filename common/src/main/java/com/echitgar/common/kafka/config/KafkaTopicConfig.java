@@ -8,7 +8,7 @@ import org.springframework.kafka.config.TopicBuilder;
 
 @Configuration
 public class KafkaTopicConfig {
-  @Value(value = "${message.topic1}")
+  @Value(value = "${kafka.topic1}")
   private String topic1;
 
   @Bean

@@ -9,7 +9,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
 @Component
-@KafkaListener(id = "url-generator-listener-id", topics = "topic1")
+@KafkaListener(id = "url-generator-listener-id", topics = "${kafka.topic1}")
 public class Listener {
   @KafkaHandler
   public void handleSenderMessage(Message message) {

@@ -18,7 +18,7 @@ public class UrlSendManager {
 
   private final ScheduledExecutorService scheduler;
 
-  @Value(value = "${message.topic1}")
+  @Value(value = "${kafka.topic1}")
   private String topicUrl;
 
   @Autowired private KafkaTemplate<String, Object> kafkaTemplate;

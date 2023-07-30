@@ -2,9 +2,5 @@ spring:
   kafka:
     bootstrap-servers: localhost:9092
 
-message:
+kafka:
   topic1: topic1
-  topic2: topic2
-
-url-generator-service:
-  greeting: Hello topic!

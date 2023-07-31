@@ -1,0 +1,6 @@
+url:
+  generator:
+    send:
+      initialDelay: 1
+      period: 1
+      count: 1

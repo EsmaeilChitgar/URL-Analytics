@@ -21,6 +21,15 @@ public class UrlSendManager {
   @Value(value = "${kafka.topic1}")
   private String topicUrl;
 
+  @Value(value = "${url.generator.send.initialDelay}")
+  private int sendingInitialDelay;
+
+  @Value(value = "${url.generator.send.period}")
+  private int sendingPeriod;
+
+  @Value(value = "${url.generator.send.count}")
+  private int sendingCountEachTime;
+
   @Autowired private KafkaTemplate<String, Object> kafkaTemplate;
 
   public UrlSendManager() {
@@ -36,8 +45,8 @@ public class UrlSendManager {
           kafkaTemplate.send(topicUrl, message);
           LOG.info("URLGeneratorServiceApplication sends url: " + message);
         },
-        1,
-        1,
+        sendingInitialDelay,
+        sendingPeriod,
         TimeUnit.SECONDS);
   }
 }

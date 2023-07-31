@@ -34,9 +34,7 @@ public class ElasticsearchResource {
   private String fieldName;
 
   public ElasticsearchResource() {
-    client =
-        new RestHighLevelClient(
-            RestClient.builder(new HttpHost(host, port, "http")));
+    client = new RestHighLevelClient(RestClient.builder(new HttpHost(host, port, "http")));
   }
 
   public void send(Message message) {

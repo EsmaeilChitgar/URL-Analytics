@@ -1,0 +1,7 @@
+elasticsearch:
+  host: localhost
+  port: 9200
+  indexName: my_index
+  documentType: _doc
+  field:
+    name: message

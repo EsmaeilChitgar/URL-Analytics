@@ -11,18 +11,32 @@ import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.xcontent.XContentBuilder;
 import org.elasticsearch.xcontent.XContentFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ElasticsearchResource {
   RestHighLevelClient client;
 
+  @Value("${elasticsearch.host}")
+  private String host;
+
+  @Value("${elasticsearch.port}")
+  private Integer port;
+
+  @Value("${elasticsearch.indexName}")
+  private String indexName;
+
+  @Value("${elasticsearch.documentType}")
+  private String documentType;
+
+  @Value("${elasticsearch.field.name}")
+  private String fieldName;
+
   public ElasticsearchResource() {
-    String elasticsearchHost = "localhost";
-    int elasticsearchPort = 9200;
     client =
         new RestHighLevelClient(
-            RestClient.builder(new HttpHost(elasticsearchHost, elasticsearchPort, "http")));
+            RestClient.builder(new HttpHost(host, port, "http")));
   }
 
   public void send(Message message) {
@@ -33,11 +47,9 @@ public class ElasticsearchResource {
     try {
       XContentBuilder builder = XContentFactory.jsonBuilder();
       builder.startObject();
-      builder.field("message", message);
+      builder.field(fieldName, message);
       builder.endObject();
 
-      String indexName = "my_index";
-      String documentType = "_doc";
       IndexRequest request = new IndexRequest(indexName, documentType).source(builder);
 
       client.index(request, RequestOptions.DEFAULT);

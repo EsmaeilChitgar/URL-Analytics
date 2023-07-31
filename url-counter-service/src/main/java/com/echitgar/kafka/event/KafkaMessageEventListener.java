@@ -17,6 +17,6 @@ public class KafkaMessageEventListener implements ApplicationListener<KafkaMessa
     String message = event.getMessage();
     elasticsearchResource.send(message);
 
-    LOG.info("recieve message in event listener: " + event.getMessage());
+    LOG.info("Receive message in event listener: " + event.getMessage());
   }
 }

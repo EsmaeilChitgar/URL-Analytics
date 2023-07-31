@@ -2,7 +2,6 @@ package com.echitgar.kafka.listener;
 
 import static com.echitgar.common.log.LogManager.LOG;
 
-import com.echitgar.common.kafka.event.KafkaMessageEvent;
 import com.echitgar.schema.Message;
 import org.springframework.kafka.annotation.KafkaHandler;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -24,7 +23,5 @@ public class Listener {
   @KafkaHandler(isDefault = true)
   public void unknown(Object object) {
     LOG.warn("listener: Unknown type received: " + object);
-
-    KafkaMessageEvent event = new KafkaMessageEvent(this, "Unknown type received: " + object);
   }
 }

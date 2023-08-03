@@ -1,4 +1,4 @@
-package com.echitgar.kafka.listener;
+package com.echitgar.common.kafka.listener;
 
 import static com.echitgar.common.log.LogManager.LOG;
 
@@ -11,7 +11,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
 @Component
-@KafkaListener(id = "url-counter-listener-id", topics = "${kafka.topic1}")
+@KafkaListener(id = "${spring.application.name}-listener-id", topics = "${kafka.topic1}")
 public class Listener {
   @Autowired private ApplicationEventPublisher applicationEventPublisher;
 

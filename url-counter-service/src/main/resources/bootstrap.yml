@@ -7,4 +7,4 @@ spring:
     config:
       uri: http://localhost:9090
       profile: default
-      name: url-counter, kafka, elasticsearch
+      name: url-counter, kafka, elastic

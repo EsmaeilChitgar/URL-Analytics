@@ -1,4 +1,4 @@
-elasticsearch:
+elastic:
   host: localhost
   port: 9200
   indexName: my_index

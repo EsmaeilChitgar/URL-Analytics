@@ -1,9 +1,7 @@
 package com.echitgar.send.elasticsearch;
 
-import static com.echitgar.common.log.LogManager.LOG;
-
 import com.echitgar.schema.Message;
-import java.io.IOException;
+import jakarta.annotation.PostConstruct;
 import org.apache.http.HttpHost;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.client.RequestOptions;
@@ -14,26 +12,31 @@ import org.elasticsearch.xcontent.XContentFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+
+import static com.echitgar.common.log.LogManager.LOG;
+
 @Component
 public class ElasticsearchResource {
   RestHighLevelClient client;
 
-  @Value("${elasticsearch.host}")
+  @Value("${elastic.host}")
   private String host;
 
-  @Value("${elasticsearch.port}")
-  private Integer port;
+  @Value("${elastic.port}")
+  private int port;
 
-  @Value("${elasticsearch.indexName}")
+  @Value("${elastic.indexName}")
   private String indexName;
 
-  @Value("${elasticsearch.documentType}")
+  @Value("${elastic.documentType}")
   private String documentType;
 
-  @Value("${elasticsearch.field.name}")
+  @Value("${elastic.field.name}")
   private String fieldName;
 
-  public ElasticsearchResource() {
+  @PostConstruct
+  public void initialize() {
     client = new RestHighLevelClient(RestClient.builder(new HttpHost(host, port, "http")));
   }
 

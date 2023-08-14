@@ -3,7 +3,7 @@ package com.echitgar.kafka.event;
 import static com.echitgar.common.log.LogManager.LOG;
 
 import com.echitgar.common.kafka.event.KafkaMessageEvent;
-import com.echitgar.send.elasticsearch.ElasticsearchResource;
+import com.echitgar.elasticsearch.ElasticsearchResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;

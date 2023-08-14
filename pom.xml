@@ -25,6 +25,7 @@
         <module>url-spec</module>
         <module>url-generator-service</module>
         <module>url-counter-service</module>
+        <module>elasticsearch-monitor-service</module>
     </modules>
 
     <licenses>

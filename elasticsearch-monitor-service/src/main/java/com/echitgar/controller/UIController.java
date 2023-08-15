@@ -1,7 +1,7 @@
 package com.echitgar.controller;
 
-import com.echitgar.common.model.User;
-import com.echitgar.service.UserService;
+import com.echitgar.common.model.Message;
+import com.echitgar.service.MessageService;
 import java.util.List;
 import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,19 +11,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class UIController {
-  private UserService userService;
+  private MessageService messageService;
 
   @Autowired
-  public UIController(UserService userService) {
-    this.userService = userService;
+  public UIController(MessageService messageService) {
+    this.messageService = messageService;
   }
 
   // when reload localhost:8080/search
   @GetMapping("/search")
   public String home(Model model) {
-    List<User> users = this.userService.search("");
-    List<String> names = users.stream().flatMap(user -> Stream.of(user.getCountry())).toList();
-    model.addAttribute("names", names);
+    List<Message> Messages = this.messageService.search("com");
+    List<String> messageStrings =
+        Messages.stream().flatMap(message -> Stream.of(message.getMessage())).toList();
+    model.addAttribute("names", messageStrings);
     return "search";
   }
 }

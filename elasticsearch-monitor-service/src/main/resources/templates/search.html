@@ -1,7 +1,7 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-	<title>User Search</title>
+	<title>Message Search</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -12,12 +12,12 @@
 <body>
 
 <div class="card mb-3" style="max-width: 540px;">
-	<p class="text-info">Search Users By Their Country</p>
+	<p class="text-info">Search Messages</p>
 	<span class="border border-info">
 	<div class="input-group mb-3">
-	  <input type="text" class="form-control" placeholder="Search Users By Their Country" aria-label="Country Name" aria-describedby="btnNameSearch" id="countryName-id">
+	  <input type="text" class="form-control" placeholder="Enter Message to Search" aria-label="Message Name" aria-describedby="btnNameSearch" id="message-id">
 	  <div class="input-group-append">
-	    <button class="btn btn-outline-secondary" type="button" id="btnNameSearch">Search</button>
+	    <button class="btn btn-outline-secondary" type="button" id="btnNameSearch">Search...</button>
 	  </div>
 	</div>
 </span>
@@ -32,9 +32,9 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 <script th:inline="javascript">
 	$(document).ready(function() {
-		$('#countryName-id').autocomplete({
+		$('#message-id').autocomplete({
 					source: function (request, response){
-						$.get("http://192.168.190.128:8080/users/suggestion?",{q : request.term},function(data, status){
+						$.get("http://192.168.190.128:8080/messages/suggestion?",{q : request.term},function(data, status){
 							$("#results").html("");
 							if(status=='success'){
 								response(data);
@@ -45,14 +45,14 @@
 		);
 
 		$("#btnNameSearch").click(function(){
-			var inputText = $("#countryName-id").val();
+			var inputText = $("#message-id").val();
 			if(inputText.length == 0) {
-				alert("Enter country name");
+				alert("Enter Message");
 			}else{
 				var response = '';
 				$.ajax({
 					type: "GET",
-					url: "http://192.168.190.128:8080/users/query?keywords="+inputText,
+					url: "http://192.168.190.128:8080/messages/query?keywords=" + inputText,
 					async: true,
 					success: function(resp) {
 						var len = resp.length;
@@ -63,7 +63,7 @@
 							strHTML = "<p class='text-success'>"+len + " matches found.</p>";
 							strHTML += "<ul class='list-unstyled'>";
 							for(var i=0; i<len; i++){
-								strHTML += "<li>" + resp[i].firstName + " " + resp[i].lastName + " from " + resp[i].country+"</li>";
+								strHTML += "<li>" + (i+1) + "	" + resp[i].message + "</li>";
 							}
 							strHTML = strHTML + "</ul>";
 							$("#results").html(strHTML)

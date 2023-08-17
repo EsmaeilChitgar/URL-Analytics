@@ -9,7 +9,6 @@ import org.springframework.data.elasticsearch.repository.config.EnableElasticsea
 @SpringBootApplication
 @EnableDiscoveryClient
 public class ElasticsearchMonitorServiceApplication {
-
   public static void main(String[] args) {
     SpringApplication.run(ElasticsearchMonitorServiceApplication.class, args);
   }

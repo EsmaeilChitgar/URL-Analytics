@@ -2,7 +2,7 @@ package com.echitgar.service;
 
 import co.elastic.clients.elasticsearch._types.query_dsl.Operator;
 import co.elastic.clients.elasticsearch._types.query_dsl.Query;
-import com.echitgar.common.model.Message;
+import com.echitgar.common.model.ElasticsearchMessage;
 import com.echitgar.repository.MessageRepository;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,11 +19,11 @@ public class MessageService {
   @Autowired private MessageRepository messageRepository;
   @Autowired private ElasticsearchOperations elasticsearchOperations;
 
-  public List<Message> listAll() {
+  public List<ElasticsearchMessage> listAll() {
     return this.messageRepository.findAll();
   }
 
-  public Message save(Message message) {
+  public ElasticsearchMessage save(ElasticsearchMessage message) {
     return this.messageRepository.save(message);
   }
 
@@ -31,14 +31,15 @@ public class MessageService {
     return this.messageRepository.count();
   }
 
-  public List<Message> search(String keywords) {
+  public List<ElasticsearchMessage> search(String keywords) {
     Float nonExistingBoost = null;
     // even though it exists in SpringBoot, ElasticSearch has no boost for this type of query
     // when you analyze what matchQuery returns, it also has nothing related to boost
     Query query =
         QueryBuilders.matchQuery("message", keywords, Operator.Or, nonExistingBoost)._toQuery();
     NativeQuery nativeQuery = NativeQuery.builder().withQuery(query).build();
-    SearchHits<Message> result = this.elasticsearchOperations.search(nativeQuery, Message.class);
+    SearchHits<ElasticsearchMessage> result =
+        this.elasticsearchOperations.search(nativeQuery, ElasticsearchMessage.class);
     return result.stream().map(SearchHit::getContent).collect(Collectors.toList());
   }
 }

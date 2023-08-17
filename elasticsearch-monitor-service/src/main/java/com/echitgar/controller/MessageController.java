@@ -1,6 +1,6 @@
 package com.echitgar.controller;
 
-import com.echitgar.common.model.Message;
+import com.echitgar.common.model.ElasticsearchMessage;
 import com.echitgar.service.MessageService;
 import java.util.List;
 import java.util.stream.Stream;
@@ -17,20 +17,20 @@ public class MessageController {
   @Autowired private MessageService messageService;
 
   @GetMapping
-  public List<Message> getAllMessages() {
+  public List<ElasticsearchMessage> getAllMessages() {
     return this.messageService.listAll();
   }
 
   @GetMapping(path = "/query")
   @ResponseBody
-  public List<Message> searchMessages(@RequestParam String keywords) {
+  public List<ElasticsearchMessage> searchMessages(@RequestParam String keywords) {
     return this.messageService.search(keywords);
   }
 
   @GetMapping("/suggestion")
   @ResponseBody
   public List<String> fetchSuggestions(@RequestParam(value = "q", required = false) String query) {
-    List<Message> messages = this.messageService.search(query);
+    List<ElasticsearchMessage> messages = this.messageService.search(query);
     return messages.stream().flatMap(message -> Stream.of(message.getMessage())).toList();
   }
 }

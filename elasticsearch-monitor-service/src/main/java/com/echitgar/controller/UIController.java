@@ -1,6 +1,6 @@
 package com.echitgar.controller;
 
-import com.echitgar.common.model.Message;
+import com.echitgar.common.model.ElasticsearchMessage;
 import com.echitgar.service.MessageService;
 import java.util.List;
 import java.util.stream.Stream;
@@ -21,7 +21,7 @@ public class UIController {
   // when reload localhost:8080/search
   @GetMapping("/search")
   public String home(Model model) {
-    List<Message> Messages = this.messageService.search("com");
+    List<ElasticsearchMessage> Messages = this.messageService.search("com");
     List<String> messageStrings =
         Messages.stream().flatMap(message -> Stream.of(message.getMessage())).toList();
     model.addAttribute("names", messageStrings);

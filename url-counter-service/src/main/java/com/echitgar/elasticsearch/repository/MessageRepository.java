@@ -1,6 +1,6 @@
 package com.echitgar.elasticsearch.repository;
 
-import com.echitgar.common.model.Message;
+import com.echitgar.common.model.ElasticsearchMessage;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 
 @EnableElasticsearchRepositories
 @Repository
-public interface MessageRepository extends ElasticsearchRepository<Message, UUID> {
-  List<Message> findAll();
+public interface MessageRepository extends ElasticsearchRepository<ElasticsearchMessage, UUID> {
+  List<ElasticsearchMessage> findAll();
 }

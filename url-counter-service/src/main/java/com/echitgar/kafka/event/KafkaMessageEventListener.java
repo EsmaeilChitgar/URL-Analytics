@@ -18,7 +18,12 @@ public class KafkaMessageEventListener implements ApplicationListener<KafkaMessa
   @Override
   public void onApplicationEvent(KafkaMessageEvent event) {
     Message kafkaMessage = event.getMessage();
-    ElasticsearchMessage elasticsearchMessage = ElasticsearchMessage.builder().id(UUID.randomUUID()).message(kafkaMessage.getMessage()).description(kafkaMessage.getDescription()).build();
+    ElasticsearchMessage elasticsearchMessage =
+        ElasticsearchMessage.builder()
+            .id(UUID.randomUUID())
+            .message(kafkaMessage.getMessage())
+            .description(kafkaMessage.getDescription())
+            .build();
     elasticsearchResource.send(elasticsearchMessage);
 
     LOG.info("Receive message in event listener: " + kafkaMessage);

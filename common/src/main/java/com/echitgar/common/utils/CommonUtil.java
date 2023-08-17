@@ -20,17 +20,6 @@ public final class CommonUtil {
   }
 
   public static boolean nullOrEmpty(Object object) {
-    return object == null
-        || nullOrEmpty(
-            object
-                .toString()
-                .toString()
-                .toString()
-                .toString()
-                .toString()
-                .toString()
-                .toString()
-                .toString()
-                .toString());
+    return object == null || nullOrEmpty(object.toString());
   }
 }

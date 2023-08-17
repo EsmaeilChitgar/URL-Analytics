@@ -1,6 +1,6 @@
-package com.echitgar.repository;
+package com.echitgar.common.elasticsearch.repository;
 
-import com.echitgar.common.model.ElasticsearchMessage;
+import com.echitgar.common.elasticsearch.model.ElasticsearchMessage;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;

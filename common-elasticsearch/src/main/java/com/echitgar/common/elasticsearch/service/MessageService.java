@@ -1,9 +1,9 @@
-package com.echitgar.service;
+package com.echitgar.common.elasticsearch.service;
 
 import co.elastic.clients.elasticsearch._types.query_dsl.Operator;
 import co.elastic.clients.elasticsearch._types.query_dsl.Query;
-import com.echitgar.common.model.ElasticsearchMessage;
-import com.echitgar.repository.MessageRepository;
+import com.echitgar.common.elasticsearch.model.ElasticsearchMessage;
+import com.echitgar.common.elasticsearch.repository.MessageRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;

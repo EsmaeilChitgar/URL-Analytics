@@ -2,8 +2,8 @@ package com.echitgar.elasticsearch;
 
 import static com.echitgar.common.log.LogManager.LOG;
 
-import com.echitgar.common.model.ElasticsearchMessage;
-import com.echitgar.elasticsearch.service.MessageService;
+import com.echitgar.common.elasticsearch.model.ElasticsearchMessage;
+import com.echitgar.common.elasticsearch.service.MessageService;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

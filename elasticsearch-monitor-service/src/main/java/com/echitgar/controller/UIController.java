@@ -1,7 +1,7 @@
 package com.echitgar.controller;
 
-import com.echitgar.common.model.ElasticsearchMessage;
-import com.echitgar.service.MessageService;
+import com.echitgar.common.elasticsearch.model.ElasticsearchMessage;
+import com.echitgar.common.elasticsearch.service.MessageService;
 import java.util.List;
 import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;

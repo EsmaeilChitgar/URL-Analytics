@@ -1,5 +1,6 @@
-package com.echitgar.common.model;
+package com.echitgar.common.elasticsearch.model;
 
+import com.echitgar.common.model.Message;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

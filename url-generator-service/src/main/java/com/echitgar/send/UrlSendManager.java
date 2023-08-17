@@ -2,6 +2,7 @@ package com.echitgar.send;
 
 import static com.echitgar.common.log.LogManager.LOG;
 
+import com.echitgar.schema.Message;
 import com.echitgar.url.UrlGenerator;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -41,7 +42,7 @@ public class UrlSendManager {
   public void send() {
     scheduler.scheduleAtFixedRate(
         () -> {
-          String message = urlGenerator.generateUrl();
+          Message message = new Message().withMessage(urlGenerator.generateUrl());
           kafkaTemplate.send(topicUrl, message);
           LOG.info("URLGeneratorServiceApplication sends url: " + message);
         },

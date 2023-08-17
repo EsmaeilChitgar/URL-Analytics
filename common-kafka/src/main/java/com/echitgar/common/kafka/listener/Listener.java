@@ -17,13 +17,7 @@ public class Listener {
 
   @KafkaHandler
   public void handleSenderMessage(Message message) {
-    LOG.info("listener: Message received: " + message.getMessage());
-  }
-
-  @KafkaHandler
-  public void handleSenderMessage(String message) {
-    LOG.info("listener: String received: " + message);
-
+    LOG.info("listener: Message received: " + message);
     KafkaMessageEvent event = new KafkaMessageEvent(this, message);
     applicationEventPublisher.publishEvent(event);
   }
@@ -32,7 +26,8 @@ public class Listener {
   public void unknown(Object object) {
     LOG.warn("listener: Unknown type received: " + object);
 
-    KafkaMessageEvent event = new KafkaMessageEvent(this, "Unknown type received: " + object);
+    KafkaMessageEvent event =
+        new KafkaMessageEvent(this, new Message().withMessage("Unknown type received: " + object));
     applicationEventPublisher.publishEvent(event);
   }
 }

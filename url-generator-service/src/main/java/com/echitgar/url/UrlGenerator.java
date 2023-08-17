@@ -12,6 +12,6 @@ public class UrlGenerator {
   }
 
   public String generateUrl() {
-    return "http://com.example/" + random.nextInt(sizeOfRepository + 1);
+    return "http://echitgar/" + random.nextInt(sizeOfRepository + 1);
   }
 }

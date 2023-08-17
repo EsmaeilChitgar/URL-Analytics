@@ -9,6 +9,10 @@
     "message": {
       "description": "message string",
       "type": "string"
+    },
+    "description": {
+      "description": "message description",
+      "type": "string"
     }
   },
   "required": [],

@@ -3,7 +3,7 @@ package com.echitgar.common.kafka.listener;
 import static com.echitgar.common.log.LogManager.LOG;
 
 import com.echitgar.common.kafka.event.KafkaMessageEvent;
-import com.echitgar.common.model.Message;
+import com.echitgar.schema.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.kafka.annotation.KafkaHandler;

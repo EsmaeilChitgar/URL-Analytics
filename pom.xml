@@ -21,9 +21,10 @@
 
     <modules>
         <module>config-server</module>
+        <module>url-spec</module>
         <module>common</module>
         <module>common-kafka</module>
-        <module>url-spec</module>
+        <module>common-elasticsearch</module>
         <module>url-generator-service</module>
         <module>url-counter-service</module>
         <module>elasticsearch-monitor-service</module>

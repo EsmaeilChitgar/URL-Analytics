@@ -11,3 +11,27 @@ spring:
 elasticsearch:
   rest:
     uris: http://localhost:9200
+
+# Enable specific endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        exclude:
+  endpoint:
+    health:
+      show-details: always
+  info:
+    env:
+      enabled: true
+
+# Info endpoint configuration
+info:
+  app:
+    name: ${spring.application.name}
+    description: ${spring.application.name}
+    version: 0.0.2
+    encoding: UTF-8
+    java:
+      version: 17

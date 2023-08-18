@@ -8,3 +8,27 @@ spring:
       uri: http://localhost:9090
       profile: default
       name: url-generator, kafka
+
+# Enable specific endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        exclude:
+  endpoint:
+    health:
+      show-details: always
+  info:
+    env:
+      enabled: true
+
+# Info endpoint configuration
+info:
+  app:
+    name: ${spring.application.name}
+    description: ${spring.application.name}
+    version: 0.0.2
+    encoding: UTF-8
+    java:
+      version: 17

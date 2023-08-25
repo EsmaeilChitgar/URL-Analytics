@@ -5,6 +5,7 @@ import com.echitgar.common.elasticsearch.service.MessageService;
 import java.util.List;
 import java.util.stream.Stream;
 
+import com.echitgar.common.exception.CatalogExceptionMessage;
 import com.echitgar.common.exception.web.api.InvalidRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,7 +36,7 @@ public class MessageController {
   public List<String> fetchSuggestions(@RequestParam(value = "q", required = false) String query) {
     //An example of how throw an exception with status code and message
     if (query.contains("@")){
-      throw new InvalidRequestException(HttpStatus.FORBIDDEN, "@ not allowed");
+      throw new InvalidRequestException(HttpStatus.FORBIDDEN, CatalogExceptionMessage.invalidCharacter("@"));
     }
 
     List<ElasticsearchMessage> messages = this.messageService.search(query);
